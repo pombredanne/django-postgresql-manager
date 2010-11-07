@@ -80,3 +80,16 @@ class PgUserModelForm(forms.ModelForm):
         return password2
 
 
+
+class PgDatabaseModelForm(forms.ModelForm):
+
+    class Meta:
+        model = cache.get_model('PostgreSQL_manager', 'PgDatabase')
+    
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+        if name.lower() in settings.PGMANAGER_FORBIDDEN_DATABASE_NAMES:
+            self._errors['name'] = self.error_class(['This name is reserved for internal use.'])
+        return name
+
+

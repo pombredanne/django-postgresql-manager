@@ -30,7 +30,7 @@ from django.db.models.loading import cache
 from django.db.utils import DatabaseError, IntegrityError
 from django.contrib import messages
 
-from PostgreSQL_manager.forms import PgUserModelForm
+from PostgreSQL_manager.forms import PgUserModelForm, PgDatabaseModelForm
 
 
 
@@ -103,7 +103,7 @@ admin.site.register(cache.get_model('PostgreSQL_manager', 'PgUser'), PgUserAdmin
 
 class PgDatabaseAdmin(admin.ModelAdmin):
 
-    readonly_fields = ['name', 'owner', 'date_created', 'date_modified']
+    form = PgDatabaseModelForm
     list_display = ('name', 'owner', 'connlimit', 'date_created')
     
     def get_form(self, request, obj=None, **kwargs):
