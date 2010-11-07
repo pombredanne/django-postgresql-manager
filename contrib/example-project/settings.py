@@ -20,7 +20,7 @@ DATABASES = {
     # Database connection settings for PostgreSQL_manager
     'PostgreSQL_manager_conn': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
+        'NAME': 'postgres',  # Database name
         'USER': 'administrator',
         'PASSWORD': '1234',
         'HOST': 'localhost',
