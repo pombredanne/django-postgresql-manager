@@ -46,6 +46,9 @@ django-postgresql-manager currently supports:
 - Multiple PostgreSQL roles per Django user. Each user has control over the
   roles it has created.
 
+The distribution package includes an example project, which can be used to
+demonstrate the application quickly. Read the instructions in the HELP file.
+
 More information about the installation, configuration and usage of this app
 can be found in the *HELP* file inside the distribution package or in the
 project's `wiki <http://www.codetrax.org/projects/django-postgresql-manager/wiki>`_.
