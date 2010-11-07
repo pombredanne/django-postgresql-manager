@@ -16,14 +16,15 @@ How this distribution package is organized
 The following list outlines the kind of information each of the files of this
 distribution package contains:
 
- * AUTHORS : List of all authors and contributors.
- * BUGS    : Information about how to file bug reports or ask for new features.
- * HELP    : Instructions on how to use this software.
- * INSTALL : Information and examples of how to use the provided installation
- * LICENSE : The terms of the license that governs your use of this software.
- * NOTICE  : Copyright, trademark, attribution and sponsorship information.
- * SUPPORT : Information on how to get support for this software.
- * README  : This file.
+ * AUTHORS  : List of all authors and contributors.
+ * BUGS     : Information about how to file bug reports or ask for new features.
+ * HELP     : Instructions on how to use this software.
+ * HELP.html: A HTML version of the HELP document.
+ * INSTALL  : Information and examples of how to use the provided installation
+ * LICENSE  : The terms of the license that governs your use of this software.
+ * NOTICE   : Copyright, trademark, attribution and sponsorship information.
+ * SUPPORT  : Information on how to get support for this software.
+ * README   : This file.
 
 
 License
