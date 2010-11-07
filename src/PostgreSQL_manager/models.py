@@ -37,7 +37,7 @@ from PostgreSQL_manager import managers
 class PgUser(models.Model):
     
     name = models.SlugField(verbose_name='name', max_length=55, db_index=True, unique=True, help_text='''Enter a name for the PostgreSQL Cluster user''')
-    connlimit = models.IntegerField(default=-1, help_text='''If role is active, this specifies how many concurrent connections the role can make to the server. -1 (the default) means no limit.''')
+    connlimit = models.IntegerField(verbose_name='connection limit', default=-1, help_text='''If role is active, this specifies how many concurrent connections the role can make to the server. -1 (the default) means no limit.''')
     is_active = models.BooleanField(verbose_name='active', default=True, db_index=True)
 
     date_created = models.DateTimeField(verbose_name='created on', auto_now_add=True)
@@ -61,7 +61,7 @@ class PgDatabase(models.Model):
     
     name = models.SlugField(verbose_name='name', max_length=100, db_index=True, unique=True, help_text='''Enter a name for the PostgreSQL database. Note that the database name will be prefixed with your Primary Panel username.''')
     owner = models.ForeignKey('PostgreSQL_manager.PgUser', related_name='%(class)s_owner')
-    connlimit = models.IntegerField(default=-1, help_text='''Enter the number of concurrent connections that can be made to this database. -1 means no limit.''')
+    connlimit = models.IntegerField(verbose_name='connection limit', default=-1, help_text='''Enter the number of concurrent connections that can be made to this database. -1 means no limit.''')
     
     date_created = models.DateTimeField(verbose_name='created on', auto_now_add=True)
     date_modified = models.DateTimeField(verbose_name='last modified on', auto_now=True)
