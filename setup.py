@@ -3,7 +3,8 @@
 #
 #  This file is part of django-postgresql-manager.
 #
-#  django-postgresql-manager - 
+#  django-postgresql-manager - a Django application which can be used to manage
+#  PostgreSQL users and databases.
 #
 #  Development Web Site:
 #    - http://www.codetrax.org/projects/django-postgresql-manager
@@ -56,13 +57,13 @@ if __name__=='__main__':
     setup(
         name = 'django-postgresql-manager',
         version = get_version(),
-        license = "Apache License version 2"
+        license = 'Apache License version 2',
         author = 'George Notaras',
         author_email = 'gnot [at] g-loaded.eu',
         maintainer = 'George Notaras',
         maintainer_email = 'gnot [at] g-loaded.eu',
         url = 'http://www.codetrax.org/projects/django-postgresql-manager',
-        description = 'django-postgresql-manager is a ...',
+        description = 'A Django application which can be used to manage PostgreSQL users and databases.',
         long_description = long_description,
         download_url = 'https://source.codetrax.org/hgroot/django-postgresql-manager',
         classifiers = [
@@ -74,6 +75,7 @@ if __name__=='__main__':
             'Natural Language :: English',
             'Operating System :: OS Independent',
             'Programming Language :: Python',
+            'Topic :: Database :: Front-Ends',
             'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
             'Topic :: Software Development :: Libraries :: Application Frameworks',
             'Topic :: Software Development :: Libraries :: Python Modules',

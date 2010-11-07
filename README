@@ -1,8 +1,7 @@
 django-postgresql-manager README
 ========================================================================
-django-postgresql-manager is a ...
-
-TODO: ...
+django-postgresql-manager is a Django application which can be used to manage
+PostgreSQL users and databases.
 
 Project Development Web Site:
  * https://www.codetrax.org/projects/django-postgresql-manager

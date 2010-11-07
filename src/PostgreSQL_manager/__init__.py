@@ -2,7 +2,8 @@
 #
 #  This file is part of django-postgresql-manager.
 #
-#  django-postgresql-manager - 
+#  django-postgresql-manager - a Django application which can be used to manage
+#  PostgreSQL users and databases.
 #
 #  Development Web Site:
 #    - http://www.codetrax.org/projects/django-postgresql-manager
@@ -23,3 +24,33 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 #
+
+VERSION = (0, 1, 0, 'final', 0)
+
+def get_version():
+    version = '%d.%d.%d' % (VERSION[0], VERSION[1], VERSION[2])
+    return version
+
+
+long_description = """
+*django-postgresql-manager* is a Django application which can be used to manage
+PostgreSQL users and databases using a web interface.
+
+Features
+--------
+django-postgresql-manager currently supports:
+
+- User (role) and database renaming.
+- Control over the connection limit for users and databases.
+- Marking a user as not active.
+- Multiple PostgreSQL roles per Django user. Each user has control over the
+  roles it has created.
+
+More information about the installation, configuration and usage of this app
+can be found in the *HELP* file inside the distribution package or in the
+project's `wiki <http://www.codetrax.org/projects/django-postgresql-manager/wiki>`_.
+
+Spotted a bug or have a feature request? Feel free to file a report at the
+project's `issue tracker <http://www.codetrax.org/projects/django-postgresql-manager/issues>`_.
+
+"""
