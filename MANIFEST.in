@@ -11,4 +11,5 @@ include MANIFEST.in
 include requirements.txt
 include setup.cfg
 include setup.py
+recursive-include contrib/example-project *.py
 recursive-include src/PostgreSQL_manager *.py
