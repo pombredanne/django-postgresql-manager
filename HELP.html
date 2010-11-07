@@ -404,8 +404,9 @@ CREATE ROLE administrator WITH LOGIN CREATEDB CREATEROLE PASSWORD '1234';
 </pre>
 <p>Then change to the <tt class="docutils literal"><span class="pre">contrib/example-project</span></tt> directory and load the example
 project's settings file in a text editor:</p>
-<blockquote>
-vi settings.py</blockquote>
+<pre class="literal-block">
+vi settings.py
+</pre>
 <p>And make sure the <tt class="docutils literal">PostgreSQL_manager_conn</tt> database connection settings
 are correct, otherwise the Django project won't be able to connect to the
 PostgreSQL Cluster.</p>
