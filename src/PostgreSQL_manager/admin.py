@@ -82,6 +82,9 @@ class PgUserAdmin(admin.ModelAdmin):
             
         else:   # This is the change form
             
+            if 'name' in form.changed_data:
+                PgUser.objects.rename_role(form.initial['name'], obj.name)
+            
             if 'connlimit' in form.changed_data:
                 PgUser.objects.limit_connections(obj.name, obj.connlimit)
             
@@ -90,9 +93,6 @@ class PgUserAdmin(admin.ModelAdmin):
             
             if password:
                 PgUser.objects.change_password(obj.name, password)
-            
-            if 'name' in form.changed_data:
-                PgUser.objects.rename_role(form.initial['name'], obj.name)
  
         # Save the model
         obj.save()
