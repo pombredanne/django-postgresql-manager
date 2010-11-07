@@ -40,7 +40,9 @@ Features
 --------
 django-postgresql-manager currently supports:
 
-- User (role) and database renaming.
+- User (role) creation/deletion/renaming.
+- Database creation/deletion/renaming.
+- Database ownership changing.
 - Control over the connection limit for users and databases.
 - Marking a user as not active.
 - Multiple PostgreSQL roles per Django user. Each user has control over the
