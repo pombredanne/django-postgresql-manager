@@ -31,7 +31,7 @@ from django.db import connections
 
 class BasePgManager(models.Manager):
     
-    PGMANAGER_DB_ALIAS = 'pgmanager_conn'
+    PGMANAGER_DB_ALIAS = 'PostgreSQL_manager_conn'
     
     def execute_custom_query(self, sql):
         connection = connections[self.PGMANAGER_DB_ALIAS]

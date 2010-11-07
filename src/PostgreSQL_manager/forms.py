@@ -36,7 +36,7 @@ from PostgreSQL_manager import settings
 class PgUserModelForm(forms.ModelForm):
 
     class Meta:
-        model = cache.get_model('pgmanager', 'PgUser')
+        model = cache.get_model('PostgreSQL_manager', 'PgUser')
     
     # Adds two extra password fields, which will be used for password confirmation.
     password1 = forms.CharField(label='Password', required=False, widget=forms.PasswordInput, help_text="Valid characters a-z, A-Z, 0-9 and the underscore '_'")

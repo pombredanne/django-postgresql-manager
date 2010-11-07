@@ -65,7 +65,7 @@ class PgUserAdmin(admin.ModelAdmin):
         return qs.filter(created_by=request.user)
     
     def save_model(self, request, obj, form, change):
-        PgUser = cache.get_model('pgmanager', 'PgUser')
+        PgUser = cache.get_model('PostgreSQL_manager', 'PgUser')
         password = form.cleaned_data.get('password1')
         
         if not change:  # User creation form
@@ -97,7 +97,7 @@ class PgUserAdmin(admin.ModelAdmin):
         # Save the model
         obj.save()
 
-admin.site.register(cache.get_model('pgmanager', 'PgUser'), PgUserAdmin)
+admin.site.register(cache.get_model('PostgreSQL_manager', 'PgUser'), PgUserAdmin)
 
 
 
@@ -125,7 +125,7 @@ class PgDatabaseAdmin(admin.ModelAdmin):
         return super(PgDatabaseAdmin, self).get_readonly_fields(request, obj)
     
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        PgUser = cache.get_model('pgmanager', 'PgUser')
+        PgUser = cache.get_model('PostgreSQL_manager', 'PgUser')
         if db_field.name == 'owner':
             if not request.user.is_superuser:
                 kwargs['queryset'] = PgUser.objects.filter(created_by=request.user)
@@ -138,7 +138,7 @@ class PgDatabaseAdmin(admin.ModelAdmin):
         return qs.filter(created_by=request.user)
     
     def save_model(self, request, obj, form, change):
-        PgDatabase = cache.get_model('pgmanager', 'PgDatabase')
+        PgDatabase = cache.get_model('PostgreSQL_manager', 'PgDatabase')
         
         if not change:  # Database creation form
             
@@ -161,6 +161,6 @@ class PgDatabaseAdmin(admin.ModelAdmin):
         # Save the model
         obj.save()
 
-admin.site.register(cache.get_model('pgmanager', 'PgDatabase'), PgDatabaseAdmin)
+admin.site.register(cache.get_model('PostgreSQL_manager', 'PgDatabase'), PgDatabaseAdmin)
 
 

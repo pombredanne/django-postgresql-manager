@@ -59,7 +59,7 @@ signals.pre_delete.connect(signal_cb.dbms_drop_role, sender=PgUser)
 class PgDatabase(models.Model):
     
     name = models.SlugField(verbose_name='name', max_length=100, db_index=True, unique=True, help_text='''Enter a name for the PostgreSQL database. Note that the database name will be prefixed with your Primary Panel username.''')
-    owner = models.ForeignKey('pgmanager.PgUser', related_name='%(class)s_owner')
+    owner = models.ForeignKey('PostgreSQL_manager.PgUser', related_name='%(class)s_owner')
     connlimit = models.IntegerField(default=-1, help_text='''Enter the number of concurrent connections that can be made to this database. -1 means no limit.''')
     
     date_created = models.DateTimeField(verbose_name='created on', auto_now_add=True)
