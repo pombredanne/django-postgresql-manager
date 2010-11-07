@@ -92,7 +92,7 @@ in your PostgreSQL Cluster as described above::
     CREATE ROLE administrator WITH LOGIN CREATEDB CREATEROLE PASSWORD '1234';
 
 Then change to the ``contrib/example-project`` directory and load the example
-project's settings file in a text editor:
+project's settings file in a text editor::
 
     vi settings.py
 
