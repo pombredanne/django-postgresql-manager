@@ -149,14 +149,14 @@ class PgDatabaseAdmin(admin.ModelAdmin):
         
         else:   # This is the change form
             
+            if 'name' in form.changed_data:
+                PgDatabase.objects.rename_database(form.initial['name'], obj.name)
+            
             if 'owner' in form.changed_data:
                 PgDatabase.objects.set_owner(obj.name, obj.owner)
             
             if 'connlimit' in form.changed_data:
                 PgDatabase.objects.limit_connections(obj.name, obj.connlimit)
-            
-            if 'name' in form.changed_data:
-                PgDatabase.objects.rename_database(form.initial['name'], obj.name)
                 
         # Save the model
         obj.save()
