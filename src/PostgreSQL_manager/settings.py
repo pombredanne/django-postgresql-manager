@@ -44,6 +44,7 @@ _PGMANAGER_FORBIDDEN_DATABASE_NAMES = (
     'postgres',
     'template0',
     'template1',
+    'globals',
     )
 PGMANAGER_FORBIDDEN_DATABASE_NAMES = getattr(settings, 'PGMANAGER_FORBIDDEN_DATABASE_NAMES', _PGMANAGER_FORBIDDEN_DATABASE_NAMES)
 
