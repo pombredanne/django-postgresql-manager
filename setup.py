@@ -80,7 +80,6 @@ if __name__=='__main__':
             'Topic :: Software Development :: Libraries :: Application Frameworks',
             'Topic :: Software Development :: Libraries :: Python Modules',
         ],
-        license = 'Apache License version 2',
         package_dir = {'': 'src'},
         packages = ['PostgreSQL_manager'],
         include_package_data = True,
