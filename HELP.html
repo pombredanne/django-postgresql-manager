@@ -387,6 +387,43 @@ python manage.py syncdb
 </pre>
 </div>
 </div>
+<div class="section" id="running-the-example-project">
+<h1>Running the example project</h1>
+<p><tt class="docutils literal"><span class="pre">django-postgresql-manager</span></tt> ships with an example Django project which can be
+used to demonstrate the application. The example project, which is located in
+the <tt class="docutils literal">contrib</tt> directory, has the following requirements:</p>
+<ul class="simple">
+<li>Django (<tt class="docutils literal">pip install Django</tt>)</li>
+<li>Python bindings for SQLite 3 (<tt class="docutils literal">pip install pysqlite</tt>)</li>
+<li>Python bindings for PostgreSQL (<tt class="docutils literal">pip install psycopg2</tt>)</li>
+</ul>
+<p>Once these are installed in your system, create the <tt class="docutils literal">administrator</tt> role
+in your PostgreSQL Cluster as desacribed above:</p>
+<pre class="literal-block">
+CREATE ROLE administrator WITH LOGIN CREATEDB CREATEROLE PASSWORD '1234';
+</pre>
+<p>Then change to the <tt class="docutils literal"><span class="pre">contrib/example-project</span></tt> directory and load the example
+project's settings file in a text editor:</p>
+<blockquote>
+vi settings.py</blockquote>
+<p>And make sure the <tt class="docutils literal">PostgreSQL_manager_conn</tt> database connection settings
+are correct, otherwise the Django project won't be able to connect to the
+PostgreSQL Cluster.</p>
+<p>Next synchronize the Django project database (<tt class="docutils literal">test.db</tt>):</p>
+<pre class="literal-block">
+python manage.py syncdb
+</pre>
+<p>Make sure you create a root account when prompted.</p>
+<p>Finally run Django's internal web server:</p>
+<pre class="literal-block">
+python manage.py runserver 127.0.0.1:8000
+</pre>
+<p>Use any web browser to connect to the admin interface:</p>
+<pre class="literal-block">
+http://127.0.0.1:8000/admin/
+</pre>
+<p>Enjoy.</p>
+</div>
 </div>
 </body>
 </html>
