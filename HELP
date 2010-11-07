@@ -25,3 +25,44 @@ do the conversion::
 
 Then use any web browser to view the exported ``help.html`` file.
 
+
+Configuration
+=============
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'primarypanel',                      # Or path to database file if using sqlite3.
+        'USER': 'panel-user',                      # Not used with sqlite3.
+        'PASSWORD': 'XXXXXXXXX',                  # Not used with sqlite3.
+        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    },
+    # Database settings for pgmanager
+    'pgmanager_conn': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'postgres',                      # Or path to database file if using sqlite3.
+        'USER': 'administrator',                      # Not used with sqlite3.
+        'PASSWORD': 'XXXXXXX',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'OPTIONS': {
+            'autocommit': True,
+        },
+    },
+}
+
+
+INSTALLED_APPS = (
+    # My apps here
+    'staticfiles',
+    'PrimaryPanel.unixauth',
+    'PrimaryPanel.dbmanagement',
+    'PostgreSQL_manager',
+    'PrimaryPanel.hosting',
+    'PrimaryPanel.mailadmin',
+    'PrimaryPanel.spamassassin',
+
+)
+
+python manage.py syncdb
+

@@ -27,5 +27,15 @@
 from django.conf import settings
 
 
-MY_APP_SETTING = getattr(settings, 'MY_APP_SETTING', '...')
+_PGMANAGER_FORBIDDEN_USER_NAMES = (
+    'postgres',
+    'postgresql',
+    'pg',
+    'admin',
+    'administrator',
+    'root',
+    'sys',
+    'system',
+    )
+PGMANAGER_FORBIDDEN_USER_NAMES = getattr(settings, 'PGMANAGER_FORBIDDEN_USER_NAMES', _PGMANAGER_FORBIDDEN_USER_NAMES)
 

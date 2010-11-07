@@ -24,5 +24,56 @@
 #  limitations under the License.
 #
 
+
 from django.db import models
 from django.db.models import signals
+
+from PostgreSQL_manager import signal_cb
+from PostgreSQL_manager import managers
+
+
+
+class PgUser(models.Model):
+    
+    name = models.SlugField(verbose_name='name', max_length=55, db_index=True, unique=True, help_text='''Enter a name for the PostgreSQL Cluster user''')
+    connlimit = models.IntegerField(default=-1, help_text='''If role is active, this specifies how many concurrent connections the role can make to the server. -1 (the default) means no limit.''')
+    is_active = models.BooleanField(verbose_name='active', default=True, db_index=True)
+
+    date_created = models.DateTimeField(verbose_name='created on', auto_now_add=True)
+    date_modified = models.DateTimeField(verbose_name='last modified on', auto_now=True)
+    created_by = models.ForeignKey('auth.User', related_name='%(class)s_created_by')
+    
+    objects = managers.PgUserManager()
+    
+    class Meta:
+        verbose_name = 'PostgreSQL User'
+        verbose_name_plural = 'PostgreSQL Users'
+    
+    def __unicode__(self):
+        return self.name
+
+signals.pre_delete.connect(signal_cb.dbms_drop_role, sender=PgUser)
+
+
+
+class PgDatabase(models.Model):
+    
+    name = models.SlugField(verbose_name='name', max_length=100, db_index=True, unique=True, help_text='''Enter a name for the PostgreSQL database. Note that the database name will be prefixed with your Primary Panel username.''')
+    owner = models.ForeignKey('pgmanager.PgUser', related_name='%(class)s_owner')
+    connlimit = models.IntegerField(default=-1, help_text='''Enter the number of concurrent connections that can be made to this database. -1 means no limit.''')
+    
+    date_created = models.DateTimeField(verbose_name='created on', auto_now_add=True)
+    date_modified = models.DateTimeField(verbose_name='last modified on', auto_now=True)
+    created_by = models.ForeignKey('auth.User', related_name='%(class)s_created_by')
+    
+    objects = managers.PgDatabaseManager()
+    
+    class Meta:
+        verbose_name = 'PostgreSQL Database'
+        verbose_name_plural = 'PostgreSQL Databases'
+
+    def __unicode__(self):
+        return self.name
+
+signals.pre_delete.connect(signal_cb.dbms_drop_database, sender=PgDatabase)
+

@@ -24,5 +24,59 @@
 #  limitations under the License.
 #
 
+
+import string
+
 from django import forms
+from django.db.models.loading import cache
+
+from PostgreSQL_manager import settings
+
+
+class PgUserModelForm(forms.ModelForm):
+
+    class Meta:
+        model = cache.get_model('pgmanager', 'PgUser')
+    
+    # Adds two extra password fields, which will be used for password confirmation.
+    password1 = forms.CharField(label='Password', required=False, widget=forms.PasswordInput, help_text="Valid characters a-z, A-Z, 0-9 and the underscore '_'")
+    password2 = forms.CharField(label='Password (confirm)', required=False, widget=forms.PasswordInput, help_text="Valid characters a-z, A-Z, 0-9 and the underscore '_'")
+    
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+        if name.lower() in settings.PGMANAGER_FORBIDDEN_USER_NAMES:
+            self._errors['name'] = self.error_class(['This name is reserved for internal use.'])
+        return name
+    
+    def clean_password1(self):
+        """Assures that passord characters are: a-z, A-Z, 0-9
+        """
+        password1 = self.cleaned_data.get('password1')
+        if password1:
+            valid_chars = string.lowercase + string.uppercase + string.digits + '_'
+            for character in password1:
+                if character not in valid_chars:
+                    self._errors['password1'] = self.error_class(['Valid characters a-z, A-Z, 0-9.'])
+        return password1
+        
+    def clean_password2(self):
+        """Cleans the content of the two extra password fields.
+        """
+        password1 = self.cleaned_data.get('password1')
+        password2 = self.cleaned_data.get('password2')
+        
+        # Provided password and confirmation must match
+        if password1 != password2:
+            raise forms.ValidationError('The two password fields do not match.')
+        
+        # Password is required on new records!
+        # If a password has not been set...
+        if not password1 and not password2:
+            if self.instance.pk is None: # ... and this is a new record
+                # Attach error messages to the password fields
+                self._errors['password1'] = self.error_class(['Password must be set on new records.'])
+                self._errors['password2'] = self.error_class(['Password must be set on new records.'])
+                
+        return password2
+
 
