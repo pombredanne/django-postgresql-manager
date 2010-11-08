@@ -39,6 +39,7 @@ class PgUserAdmin(admin.ModelAdmin):
 
     form = PgUserModelForm
     list_display = ('name', 'is_active', 'connlimit', 'date_created')
+    search_fields = ('name', )
     list_filter = ('is_active', )
     
     def get_form(self, request, obj=None, **kwargs):
@@ -106,6 +107,7 @@ class PgDatabaseAdmin(admin.ModelAdmin):
 
     form = PgDatabaseModelForm
     list_display = ('name', 'owner', 'connlimit', 'date_created')
+    search_fields = ('name', 'owner__name')
     
     def get_form(self, request, obj=None, **kwargs):
         if obj is None:     # This is the add form
