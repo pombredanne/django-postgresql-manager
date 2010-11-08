@@ -49,13 +49,14 @@ django-postgresql-manager currently supports:
   roles it has created.
 
 The distribution package includes an example project, which can be used to
-demonstrate the application quickly. Read the instructions in the HELP file.
+demonstrate the application quickly.
 
 More information about the installation, configuration and usage of this app
 can be found in the *HELP* file inside the distribution package or in the
 project's `wiki <http://www.codetrax.org/projects/django-postgresql-manager/wiki>`_.
 
-Spotted a bug or have a feature request? Feel free to file a report at the
-project's `issue tracker <http://www.codetrax.org/projects/django-postgresql-manager/issues>`_.
+In case you run into any problems while using this application it is highly
+recommended you file a bug report at the project's
+`issue tracker <http://www.codetrax.org/projects/django-postgresql-manager/issues>`_.
 
 """
